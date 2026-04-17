@@ -9,6 +9,8 @@ void set_pixel(Uint32 *pixels, int x , int y , Uint32 color)
 	
 }
 
+
+
 int main()
 {
 	 SDL_Init(SDL_INIT_VIDEO);
@@ -22,14 +24,13 @@ int main()
 	while(running)
 	{
 
-	set_pixel(pixels, 400, 300, 0xFFFFFFFF);
-	set_pixel(pixels, 450, 300, 0xFFFFFFFF);
-	set_pixel(pixels, 400, 350, 0xFFFFFFFF);
-	set_pixel(pixels, 500, 400, 0xFFFFFFFF);
-	set_pixel(pixels, 600, 500, 0xFFFFFFFF);
+	// answer is linear interpolation , we will move 1 step on x and with every point the y shifts by (250/300) rise over run
+    float y = 100.0f;
+    
+	for (int i = 100; i <=400; i++){
+		set_pixel(pixels, i, (int)y, 0xFFFFFFFF);
 
-	for (int i = 0 ; i < 100 ; i++){
-		set_pixel(pixels, i, 300, 0xFFFFFFFF);
+		y = y + (250.0/300.0);
 	}
 	
 	
