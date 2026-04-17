@@ -9,7 +9,15 @@ void set_pixel(Uint32 *pixels, int x , int y , Uint32 color)
 	
 }
 
-
+void draw_line(Uint32 *pixels , int x0 , int y0 , int x1 , int y1 , Uint32 color)
+{
+	    float y = y0;
+	    
+		for (int i = x0; i <=x1; i++){
+	    	set_pixel(pixels, i, (int)y, color);
+			y = y + ((float)(y1-y0)/(float)(x1-x0));
+			}
+}
 
 int main()
 {
@@ -22,17 +30,11 @@ int main()
 	SDL_Event event;
 
 	while(running)
-	{
+	{ 
 
-	// answer is linear interpolation , we will move 1 step on x and with every point the y shifts by (250/300) rise over run
-    float y = 100.0f;
-    
-	for (int i = 100; i <=400; i++){
-		set_pixel(pixels, i, (int)y, 0xFFFFFFFF);
-
-		y = y + (250.0/300.0);
-	}
-	
+	draw_line(pixels, 400, 100, 700, 500, 0xFFFFFFFF);
+	draw_line(pixels, 700, 500, 100, 500, 0xFFFFFFFF);
+	draw_line(pixels, 100, 500, 400, 100, 0xFFFFFFFF);
 	
 	SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, 800, 600, 32, 3200, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF);
 	SDL_Surface* window_surface = SDL_GetWindowSurface(window);
@@ -55,5 +57,5 @@ int main()
 	return 0;
 }
 
-//
+
 
