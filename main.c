@@ -12,12 +12,21 @@ void set_pixel(Uint32 *pixels, int x , int y , Uint32 color)
 void draw_line(Uint32 *pixels , int x0 , int y0 , int x1 , int y1 , Uint32 color)
 {
 	    float y = y0;
-	    
-		for (int i = x0; i <=x1; i++){
-	    	set_pixel(pixels, i, (int)y, color);
-			y = y + ((float)(y1-y0)/(float)(x1-x0));
-			}
-}
+
+	    /*This this nothing but |
+	    	    int dx;
+	    	    if (x0 < x1) {
+	    	        dx = 1;
+	    	    } else {
+	    	        dx = -1;
+	    	    }*/
+	    	    
+	    int dx = (x0 < x1) ? 1 : -1;
+	    for (int i = x0; i != x1; i += dx) {
+	        set_pixel(pixels, i, (int)y, color);
+	        y += ((float)(y1 - y0) / (float)(x1 - x0));
+	    }
+}		
 
 int main()
 {
