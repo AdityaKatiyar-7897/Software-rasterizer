@@ -29,7 +29,7 @@ int main()
 	set_pixel(pixels, 600, 500, 0xFFFFFFFF);
 
 	for (int i = 0 ; i < 100 ; i++){
-		set_pixel(pixels, 400, i, 0xFFFFFFFF);
+		set_pixel(pixels, i, 300, 0xFFFFFFFF);
 	}
 	
 	
