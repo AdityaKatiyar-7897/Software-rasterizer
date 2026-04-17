@@ -23,6 +23,15 @@ int main()
 	{
 
 	set_pixel(pixels, 400, 300, 0xFFFFFFFF);
+	set_pixel(pixels, 450, 300, 0xFFFFFFFF);
+	set_pixel(pixels, 400, 350, 0xFFFFFFFF);
+	set_pixel(pixels, 500, 400, 0xFFFFFFFF);
+	set_pixel(pixels, 600, 500, 0xFFFFFFFF);
+
+	for (int i = 0 ; i < 100 ; i++){
+		set_pixel(pixels, 400, i, 0xFFFFFFFF);
+	}
+	
 	
 	SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, 800, 600, 32, 3200, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF);
 	SDL_Surface* window_surface = SDL_GetWindowSurface(window);
