@@ -24,7 +24,7 @@ void draw_line(Uint32 *pixels , int x0 , int y0 , int x1 , int y1 , Uint32 color
 	    int dx = (x0 < x1) ? 1 : -1;
 	    for (int i = x0; i != x1; i += dx) {
 	        set_pixel(pixels, i, (int)y, color);
-	        y += ((float)(y1 - y0) / (float)(x1 - x0));
+	        y += ((float)(y1 - y0) / (float)(x1 - x0)); 
 	    }
 }		
 
@@ -41,6 +41,14 @@ int main()
 	while(running)
 	{ 
 
+    float left_x = 400;
+    float right_x = 400;
+    for (int row = 100; row <= 500; row++) {
+        draw_line(pixels, (int)left_x, row, (int)right_x, row, 0xFFFFFFFF);
+        left_x += -0.75f;
+        right_x += 0.75f;
+    }
+    
 	draw_line(pixels, 400, 100, 700, 500, 0xFFFFFFFF);
 	draw_line(pixels, 700, 500, 100, 500, 0xFFFFFFFF);
 	draw_line(pixels, 100, 500, 400, 100, 0xFFFFFFFF);
